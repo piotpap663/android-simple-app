@@ -4,6 +4,8 @@ import android.app.ListActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -51,6 +53,13 @@ public class MainActivity extends AppCompatActivity {
         int position = info.position;
        showList.remove(position);
        figuresListAdapter.notifyDataSetChanged();
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.first_menu,menu);
         return true;
     }
 
