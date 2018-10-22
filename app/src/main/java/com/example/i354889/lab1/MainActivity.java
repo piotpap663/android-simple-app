@@ -3,6 +3,10 @@ package com.example.i354889.lab1;
 import android.app.ListActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -17,14 +21,40 @@ public class MainActivity extends AppCompatActivity {
 
     private ListAdapter listAdapter;
     private ListView listView;
+    private FiguresListAdapter figuresListAdapter;
+    List<DisplayFigura> showList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listView=findViewById(R.id.main_listview);
-        List<DisplayFigura> showList = ListGenerator.getList();
-        FiguresListAdapter figuresListAdapter = new FiguresListAdapter(this,R.layout.single_row,showList);
+        showList = ListGenerator.getList();
+         figuresListAdapter = new FiguresListAdapter(this,R.layout.single_row,showList);
         listView.setAdapter(figuresListAdapter);
+        registerForContextMenu(listView);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        if (v.getId() == R.id.main_listview) {
+            ListView lv = (ListView) v;
+            AdapterView.AdapterContextMenuInfo acmi = (AdapterView.AdapterContextMenuInfo) menuInfo;
+            DisplayFigura displayFigura = (DisplayFigura) lv.getItemAtPosition(acmi.position);
+            menu.add("Usuń");
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        int position = info.position;
+       showList.remove(position);
+       figuresListAdapter.notifyDataSetChanged();
+        return true;
+    }
+
+    private void updateAppInfo() {
+
     }
 }

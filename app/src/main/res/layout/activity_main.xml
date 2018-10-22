@@ -3,14 +3,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:text="KSZTAŁT"
+                android:gravity="center_vertical"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:text="POLE"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:text="ATRYBUT"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
 
 <ListView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main_listview">
-
-</ListView>
-
+    android:id="@+id/main_listview"
+    android:divider="@android:color/transparent"
+    android:dividerHeight="10.0sp"
+    android:listSelector="@android:color/transparent"/>
 
 </LinearLayout>
