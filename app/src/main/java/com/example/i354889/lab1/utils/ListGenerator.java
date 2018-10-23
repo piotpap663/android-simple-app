@@ -7,10 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListGenerator  {
-    private static int size = 10;
 
-    public static List<DisplayFigura> getList() {
-
+    public static List<DisplayFigura> getList(int size) {
         Figura []shapes = FigureGenerator.getFigures(size);
         List<DisplayFigura> listOfShapes = new ArrayList<>();
         for (int i=0;i<size;i++){

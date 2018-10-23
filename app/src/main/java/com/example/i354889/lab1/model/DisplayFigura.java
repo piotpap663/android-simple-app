@@ -4,7 +4,7 @@ import com.example.i354889.lab1.R;
 import com.example.i354889.lab1.model.enumerator.ShapeType;
 
 public class DisplayFigura {
-
+    private ShapeType type;
     private int drawablePath;
     private double pole;
     private float cecha;
@@ -21,6 +21,7 @@ public class DisplayFigura {
                 this.drawablePath = R.drawable.triangle;
                 break;
         }
+        this.type = shapeType;
         this.pole=pole;
         this.cecha=cecha;
     }
@@ -47,5 +48,9 @@ public class DisplayFigura {
 
     public void setCecha(float cecha) {
         this.cecha = cecha;
+    }
+
+    public ShapeType getType() {
+        return type;
     }
 }
