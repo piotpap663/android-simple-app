@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item android:title="Main"
-        android:id="@+id/settings_menu_main">
+        android:id="@+id/stats_menu_main">
+    </item>
+    <item android:id="@+id/stats_menu_ustawienia"
+        android:title="Ustawienia">
     </item>
 </menu>

@@ -2,6 +2,7 @@ package com.example.i354889.lab1;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.inputmethodservice.Keyboard;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -43,6 +44,8 @@ public class SettingsActivity extends AppCompatActivity {
                         SharedPreferences.Editor editor = sf.edit();
                         editor.putInt("amount",Integer.valueOf(amount.getText().toString()));
                         editor.apply();
+                        Toast toast = Toast.makeText(SettingsActivity.this,"Zaktualizowano ilość", Toast.LENGTH_SHORT);
+                        toast.show();
                     } catch (Exception e) {
                         Log.e("SettingsActivity", "nie udało się sparsować liczby");
                         showError();
@@ -53,7 +56,12 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        amount.setText(String.valueOf(sf.getInt("amount",10)));
     }
 
     @Override
@@ -67,7 +75,11 @@ public class SettingsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getTitle().toString()){
             case "Main":
-                onBackPressed();
+               Intent intent = new Intent(this,MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                break;
         }
         return true;
     }

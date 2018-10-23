@@ -90,9 +90,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
        switch (item.getTitle().toString()){
            case "Ustawienia":
-               Intent intent = new Intent(this,SettingsActivity.class);
+               intent = new Intent(this,SettingsActivity.class);
+               intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+               intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+               startActivity(intent);
+               break;
+           case "Statystyki":
+               intent = new Intent(this,StatsActivity.class);
+               intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+               intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                startActivity(intent);
        }
         return true;

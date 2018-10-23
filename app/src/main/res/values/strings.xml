@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Piotr Papiernik Android</string>
-    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_settings">Ustawienia</string>
+    <string name="title_activity_stats">Statystyki</string>
 </resources>
