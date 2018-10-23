@@ -67,8 +67,7 @@ public class SettingsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getTitle().toString()){
             case "Main":
-                Intent intent = new Intent(this,MainActivity.class);
-                startActivity(intent);
+                onBackPressed();
         }
         return true;
     }

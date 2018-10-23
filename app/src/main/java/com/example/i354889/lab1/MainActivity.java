@@ -45,10 +45,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         if(sf.getInt("amount",10)!=showList.size()){
+          /*  showList = ListGenerator.getList(sf.getInt("amount",10));
+            figuresListAdapter.notifyDataSetChanged();*/
             showList = ListGenerator.getList(sf.getInt("amount",10));
-            figuresListAdapter.notifyDataSetChanged();
+            figuresListAdapter = new FiguresListAdapter(this,R.layout.single_row,showList);
+            listView.setAdapter(figuresListAdapter);
+            updateAppInfo();
+            registerForContextMenu(listView);
             Toast toast = Toast.makeText(this, "Zaktualizowano liczbę figur",Toast.LENGTH_SHORT);
             toast.show();
+
         }
 
     }
@@ -68,6 +74,9 @@ public class MainActivity extends AppCompatActivity {
         int position = info.position;
        showList.remove(position);
        figuresListAdapter.notifyDataSetChanged();
+        SharedPreferences.Editor editor = sf.edit();
+        editor.putInt("amount",showList.size());
+        editor.apply();
        updateAppInfo();
         return true;
     }
