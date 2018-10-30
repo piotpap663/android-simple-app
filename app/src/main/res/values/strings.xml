@@ -2,4 +2,7 @@
     <string name="app_name">Piotr Papiernik Android</string>
     <string name="title_activity_settings">Ustawienia</string>
     <string name="title_activity_stats">Statystyki</string>
+    <string name="shape_arrow_down">KSZTAŁT \u02c5</string>
+    <string name="attribute_arrow_down">ATRYBUT \u02c5</string>
+    <string name="field_arrow_down">POLE \u02c5</string>
 </resources>

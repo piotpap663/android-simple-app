@@ -24,7 +24,7 @@ import java.text.NumberFormat;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private EditText amount;
+    private EditText amount,minInput,maxInput;
     private Button okButton;
     SharedPreferences sf;
 
@@ -33,9 +33,13 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         amount = findViewById(R.id.settings_amount_input);
+        minInput=findViewById(R.id.settings_min_input);
+        maxInput=findViewById(R.id.settings_max_input);
         okButton = findViewById(R.id.settings_ok_button);
          sf = getSharedPreferences("settings",MODE_PRIVATE);
         amount.setText(String.valueOf(sf.getInt("amount",10)));
+        minInput.setText(String.valueOf(sf.getInt("min",1)));
+        maxInput.setText(String.valueOf(sf.getInt("max",3)));
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,6 +47,8 @@ public class SettingsActivity extends AppCompatActivity {
                     try {
                         SharedPreferences.Editor editor = sf.edit();
                         editor.putInt("amount",Integer.valueOf(amount.getText().toString()));
+                        editor.putInt("min",Integer.valueOf(minInput.getText().toString()));
+                        editor.putInt("max",Integer.valueOf(maxInput.getText().toString()));
                         editor.apply();
                         Toast toast = Toast.makeText(SettingsActivity.this,"Zaktualizowano ilość", Toast.LENGTH_SHORT);
                         toast.show();
